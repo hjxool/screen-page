@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <link rel="stylesheet" href="screen.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="test">
+        <!-- 背景板 -->
+        <img src="../img/背景@2x.png" style="position: fixed;width: 100vw;height: 100vh;z-index: -100;object-fit: none;">
+        <!-- 遮罩 -->
+        <div id="shadow"></div>
+        <!-- 点对应设备 -->
+        <div id="showDevice">
+            <div class="angle-border left-top-border"></div>
+            <div class="angle-border left-bottom-border"></div>
+            <div class="angle-border right-top-border"></div>
+            <div class="angle-border right-bottom-border"></div>
+            <div class="container layout">
+                <div class="title">
+                    xxx
+                    <el-button class="button" @click="closeButton" style="padding: 0;" type="danger" icon="el-icon-close" circle></el-button>
+                </div>
+                <div class="deviceContainer layout">
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                    <div class="device"></div>
+                </div>
+            </div>
+        </div>
+        <div id="header" class="layout">
+            <img src="../img/返回@2x.png" class="userButton" @click="returnBack" style="top: 18px;left: 2.2vw;">
+            <img src="../img/退出@2x.png" class="userButton" @click="returnlogin" style="top: 18px;right: 2.1vw;">
+            <img class="logo" src="../img/LOGO@2x.png">
+            <video src="../img/大屏动画.mp4" autoplay loop muted style="width: 100%;height: 8.7vh;position: fixed;mix-blend-mode: screen;z-index: -99;"></video>
+            <div style="position: absolute;top: 1.8vh;right: 5.9vw;">
+                <span class="calender">{{calender}}</span>
+                <span class="weekDay">{{weekDay}}</span>
+                <span class="time">{{time}}</span>    
+            </div>
+        </div>
+        <div id="container" class="layout">
+            <div class="layout left">
+                <div class="layout">
+                    <div class="control layout" style="margin-right: 0.8vw;margin-bottom: 16px;width: 12.4vw;height: 12.6vh;">
+                        <div class="angle-border left-top-border"></div>
+                        <div class="angle-border left-bottom-border"></div>
+                        <div class="angle-border right-top-border"></div>
+                        <div class="angle-border right-bottom-border"></div>
+                        <img src="../img/立方体.png" class="icon">
+                        <div class="equipment">设备在线</div>
+                        <div class="count">{{deviceOnline}}</div>
+                    </div>
+                    <div class="control layout" style="margin-bottom: 16px;width: 12.4vw;height: 12.6vh;">
+                        <div class="angle-border left-top-border"></div>
+                        <div class="angle-border left-bottom-border"></div>
+                        <div class="angle-border right-top-border"></div>
+                        <div class="angle-border right-bottom-border"></div>
+                        <img src="../img/睡眠.png" class="icon">
+                        <div class="equipment">设备休眠</div>
+                        <div class="count">0</div>
+                    </div>
+                    <div class="control layout" style="margin-right: 0.8vw;width: 12.4vw;height: 12.6vh;">
+                        <div class="angle-border left-top-border"></div>
+                        <div class="angle-border left-bottom-border"></div>
+                        <div class="angle-border right-top-border"></div>
+                        <div class="angle-border right-bottom-border"></div>
+                        <img src="../img/离线.png" class="icon">
+                        <div class="equipment">设备离线</div>
+                        <div class="count">{{deviceOffline}}</div>
+                    </div>
+                    <div class="control layout" style="width: 12.4vw;height: 12.6vh;">
+                        <div class="angle-border left-top-border"></div>
+                        <div class="angle-border left-bottom-border"></div>
+                        <div class="angle-border right-top-border"></div>
+                        <div class="angle-border right-bottom-border"></div>
+                        <img src="../img/报警.png" class="icon">
+                        <div class="equipment">设备警告</div>
+                        <div class="count">{{deviceError}}</div>
+                    </div>
+                </div>
+                <div class="control layout" style="width: 100%;height: 29.1vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <span class="control-title">设备类型分布</span>
+                    <img src="../img/装饰图.png" class="bar-icon">
+                    <img src="../img/图表椭圆.png" style="width: 50%;height: 70%;position: absolute;left: 0;top: 20%;">
+                    <div id="pie-chart" style="width: 100%;height: 29.1vh;position: absolute;"></div>
+                </div>
+                <div class="control layout" style="width: 100%;height: 29.1vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <span class="control-title">数据上报和命令下发</span>
+                    <img src="../img/装饰图.png" class="bar-icon">
+                    <div id="line-chart" style="width: 100%;height: 29.1vh;"></div>
+                </div>
+            </div>
+            <div class="layout center">
+                <div class="control layout" style="width: 100%;height: 58.3vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <div id="map" style="width: 41.5vw;height: 55.7vh;"></div>
+                    <div id="searchResult"></div>
+                    <div class="searchPosition layout">
+                        <input type="text" id="value" v-model="value" @input="judgement()">
+                        <img src="../img/放大镜图标.png" class="search-icon">
+                    </div>
+                    <img class="mapTitle" src="../img/实时接入设备切图.png">
+                    <div class="deviceTotal"></div>
+                </div>
+                <div class="control layout" style="width: 100%;height: 29.1vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <span class="control-title">设备总数统计</span>
+                    <img src="../img/装饰图.png" class="bar-icon">
+                    <div id="bar2-chart" style="width: 100%;height: 29.1vh;"></div>
+                </div>
+            </div>
+            <div class="layout right">
+                <div class="control layout" style="width: 100%;height: 28.5vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <span class="control-title">设备用途统计</span>
+                    <img src="../img/装饰图.png" class="bar-icon">
+                    <div id="bar-chart" style="width: 100%;height: 28.5vh;"></div>
+                </div>
+                <div class="control layout" style="width: 100%;height: 28vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <span class="control-title">命令操作</span>
+                    <img src="../img/装饰图.png" class="bar-icon">
+                    <img class="button-icon" src="../img/刷新@2x.png" title="刷新" style="right: 2.3vw;top: 14px;">
+                    <img class="button-icon" src="../img/下载@2x.png" title="下载" style="right: 13px;top: 14px;">
+                    <div class="scrollbar">    
+                        <div  class="layout logs" v-for="(item,index) in list" :key="index">
+                            <div>{{item.date}}</div>
+                            <div>{{item.name}}</div>
+                            <div>{{item.action}}</div>
+                        </div>    
+                    </div>
+                </div>
+                <div class="control layout" style="width: 100%;height: 29.1vh;">
+                    <div class="angle-border left-top-border"></div>
+                    <div class="angle-border left-bottom-border"></div>
+                    <div class="angle-border right-top-border"></div>
+                    <div class="angle-border right-bottom-border"></div>
+                    <span class="control-title">设备故障比</span>
+                    <img src="../img/装饰图.png" class="bar-icon">
+                    <div id="gauge-chart" style="width: 100%;height: 29.1vh;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="footer" class="layout" style="width: 100vw;height: 11.8vh;"></div> -->
+    </div>
+    <!-- 按调用顺序引入插件 -->
+    <script src="../module/jquery-3.6.0.js"></script>
+    <script src="../module/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=EooEibTNWRSWSxpvkv1au7zKsa2YY6tK&callback"></script>
+    <script src="../module/echarts.js"></script>
+    <script src="screen.js"></script>
+    <script src="echartTotal.js"></script>
+    <script src="map.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

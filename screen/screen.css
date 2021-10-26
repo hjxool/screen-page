@@ -1,0 +1,380 @@
+/* 全局设置 */
+*{
+    box-sizing: border-box;
+}
+/* 去白边 */
+body{
+    margin: 0px;
+    overflow: hidden;
+}
+/* 所有图片自适应压缩 */
+img{
+    object-fit: contain;
+}
+/* 主体大小，不能用百分比设置 */
+#test{
+    width: 100vw;;
+    height: 100vh;
+}
+/* 遮罩 */
+#shadow{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 990;
+    background-color: #000;
+    opacity: 0.6;
+    display: none;
+}
+/* 点对应设备 */
+#showDevice{
+    position: fixed;
+    z-index: 998;
+    width: 25vw;
+    height: 100vh;
+    padding: 10px;
+    display: none;
+}
+/* 设备放置处 */
+#showDevice .container{
+    background-color: LightSkyBlue;
+    width: 100%;
+    height: 100%;
+    align-content: flex-start;
+}
+/* 抬头标题 */
+.container .title{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    line-height: 80px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+/* 关闭按钮 */
+.title .button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+}
+/* 设备容器 */
+.container .deviceContainer{
+    width: 100%;
+    height: 87%;
+    align-content: flex-start;
+    overflow: auto;
+}
+/* 设备显示滚动条样式 */
+.deviceContainer::-webkit-scrollbar{
+    width: 10px;
+    background-color: transparent;
+}
+.deviceContainer::-webkit-scrollbar-thumb{
+    border-radius: 15px;
+    background-color: wheat;
+}
+/* 单个设备 */
+.deviceContainer .device{
+    width: 90%;
+    height: 170px;
+    background:coral;
+}
+.deviceContainer .device:nth-child(odd){
+    background: slateblue;
+}
+/* flex布局 */
+.layout{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+/* 头部容器 */
+#header{
+    width: 100%;
+    height: 8.7vh;
+    position: relative;
+}
+/* 用户返回退出登录按钮 */
+#header .userButton{
+    position: absolute;
+    width: 2.4vw;
+    height: 4.2vh;
+    cursor: pointer;
+}
+#header .userButton:active{
+    transform: scale(0.9);
+    transition: all 0.2s;
+}
+/* 头部容器图标 */
+#header .logo{
+    width: 6vw;
+    height: 2.8vh;
+    position: absolute;
+    top: 2.4vh;
+    left: 5.4vw;
+}
+/* 头容器抬头图片 */
+#header .titleIcon{
+    width: 100%;
+    height: 8.9vh;
+    /* object-fit: unset; */
+}
+/* 日历 */
+#header .calender{
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #4F81FF;
+    line-height: 12px;
+}
+/* 星期 */
+#header .weekDay{
+    margin-left: 19px;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #4F81FF;
+    line-height: 14px;
+}
+/* 实时时间 */
+#header .time{
+    margin-left: 19px;
+    font-size: 2.4vh;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #E7F5FF;
+    line-height: 4.4vh;
+    text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue;
+}
+/* 主体部分 */
+#container{
+    width: 100%;
+    height: 91vh;
+}
+/* 角边框样式 */
+.angle-border{
+    position: absolute;
+    width: 14px;
+    height: 13px;
+}
+/* 四个方位的角边框定位 */
+.left-top-border{
+    top: 0;
+    left: 0;
+    border-left: 2px solid #406BD9;
+    border-top: 2px solid #406BD9;
+}
+.left-bottom-border{
+    left: 0;
+    bottom: 0;
+    border-left: 2px solid #406BD9;
+    border-bottom: 2px solid #406BD9;
+}
+.right-top-border{
+    top: 0;
+    right: 0;
+    border-right: 2px solid #406BD9;
+    border-top: 2px solid #406BD9;
+}
+.right-bottom-border{
+    right: 0;
+    bottom: 0;
+    border-right: 2px solid #406BD9;
+    border-bottom: 2px solid #406BD9;
+}
+/* 左边栏 */
+#container .left{
+    width: 26vw;
+    height: 100%;
+}
+/* 所有小模块背景样式 */
+#container .control{
+    /* width: 240px;
+    height: 122px; */
+    background: linear-gradient(0deg, rgba(6, 20, 51, 0.21), rgba(69, 148, 255, 0.3));
+    border: 1px solid #333F78;
+    position: relative;
+}
+/* 四个图标 */
+#container .icon{
+    width: 3.6vw;
+    height: 9vh;
+    position: absolute;
+    top: 16px;
+    left: 1vw;
+}
+/* 图表条状图标 */
+#container .bar-icon{
+    width: 8.6vw;
+    height: 19px;
+    position: absolute;
+    right: 3.9vw;
+    top: 12px;
+}
+/* 按钮键 */
+#container .button-icon{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+}
+/* 左边栏上部文字 */
+#container .equipment{
+    font-size: 18px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A5E2FF;
+    position: absolute;
+    top: 3vh;
+    left: 5.9vw;
+}
+/* 左边栏上部计数数字 */
+#container .count{
+    font-size: 2.8vh;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #00F6FF;
+    position: absolute;
+    bottom: 2.2vh;
+    left: 5.9vw;
+}
+/* 图表标题 */
+#container .control-title{
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A5E2FF;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+/* 图表标题前图标 */
+#container .control-title::before{
+    content: '';
+    background-image: url('../img/椭圆1.png');
+    background-size: 17px 18px;
+    display: inline-block;
+    width: 1.6vw;
+    height: 20px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+/* 中间栏 */
+#container .center{
+    width: 42.5vw;
+    height: 100%;
+}
+/* 搜索结果栏 */
+.center #searchResult{
+    width: 8.7vw;
+    height: 22.9vh;
+    position: absolute;
+    top: 5.1vh;
+    left: 1.3vw;
+    z-index: 5;
+    background-color: #061332;
+    display: none;
+}
+/* 搜索栏 */
+.center .searchPosition{
+    position: absolute;
+    left: 1.3vw;
+    top: 2.6vh;
+    z-index: 5;
+}
+/* 搜索栏 */
+.searchPosition #value{
+    width: 8.7vw;
+    height: 3vh;
+    background: #061332;
+    border: 1px solid #325ECB;
+    border-radius: 4px;
+    margin-right: 5px;
+    color: white;
+    outline: none;/* 输入框有默认选中样式 */
+}
+/* 搜索键按钮 */
+.searchPosition .search-icon{
+    width: 2.7vw;
+    height: 3vh;
+}
+/* 地图抬头图片 */
+.center .mapTitle{
+    position: absolute;
+    top: 2vh;
+    left: 17.8vw;
+    width: 6.8vw;
+    height: 4vh;
+}
+/* 数字定位 */
+.center .deviceTotal{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    position: absolute;
+    top: 5.8vh;
+    left: 17.8vw;
+}
+/* 数字背景墙 */
+.deviceTotal span{
+    width: 1.4vw;
+    height: 3.4vh;
+    background-image: url('../img/矩形1.png');
+    background-size: 1.4vw 3.4vh;
+    font-size: 2.6vh;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #E4FDFF;
+    text-align: center;
+    margin: 3px;
+}
+/* 右边栏 */
+#container .right{
+    width: 26vw;
+    height: 100%;
+}
+/* 列表 */
+.right .scrollbar{
+    width: 100%;
+    height: 20.9vh;
+    overflow-y: scroll;
+    position: absolute;
+    top: 4.5vh;
+    left: 14px;
+}
+/* 滚动条 */
+.right .scrollbar::-webkit-scrollbar{
+    /* width:16px;
+    height:16px; */
+    background-color:transparent;
+}
+/* 列表样式 */
+.scrollbar .logs{
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #8BACFE;
+    line-height: 4.3vh;
+    width: 24.5vw;
+}
+/* 列表交叉样式 */
+.scrollbar .logs:nth-child(odd){
+    background: rgba(11, 83, 180, 0.3);
+    /* opacity: 0.6;透明度属性会将字体也变色 */
+}
+/* 去掉横向滚动条 */
+/* .el-scrollbar__wrap{
+    overflow-x: hidden;
+} */
+/* 去掉百度logo */
+.anchorBL{
+    display: none;
+}
